@@ -1,0 +1,35 @@
+# Base configuration (shared across all environments)
+app_name: FastApiTelegramBotTemplate
+secret_key: jwt_secret_key
+
+database:
+  pool_size: 10
+  max_overflow: 20
+  pool_timeout: 30
+  echo: false
+  url: 'mysql+asyncmy://localhost:3306/fastapi_telegram_bot_template'
+  username: root
+  password: db_password
+
+redis:
+  url: redis://localhost:6379/0
+
+log:
+  level: INFO
+  format: '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> | <level>{message}</level>'
+  rotation: '10 MB'
+  retention: '7 days'
+
+debug: true
+
+bots:
+  - name: '@tg_bot_name'
+    token: 'tg_token'
+    mode: 'polling' # polling or webhook
+    bot_url: 'tg_bot_url'
+    app_url: 'app_url'
+
+ton:
+  center_url: 'https://testnet.toncenter.com'
+  center_api_key: 'ton_center_api_key'
+  wallet: 'ton_wallet_address'

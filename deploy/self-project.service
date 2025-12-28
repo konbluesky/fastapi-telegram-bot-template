@@ -1,0 +1,32 @@
+[Unit]
+Description=Self Project Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/work/fastapi-telegram-bot-template
+
+# 使用 conda 环境中的 gunicorn
+ExecStart=/bin/bash -c 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate fastapi-telegram-bot-template && exec gunicorn main:app -w 1 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:7777'
+
+# 环境变量
+Environment="PATH=/home/ubuntu/miniconda3/envs/fastapi-telegram-bot-template/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="APP_ENV=__APP_ENV__"
+
+# 重启策略
+Restart=always
+RestartSec=5
+
+# 日志
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=fastapi-telegram-bot-template
+
+# 优雅停止
+TimeoutStopSec=30
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

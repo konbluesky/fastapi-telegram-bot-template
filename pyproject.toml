@@ -1,0 +1,78 @@
+[project]
+name = "fastapi-telegram-bot-template"
+version = "0.1.0"
+description = "FastApi Telegram Bot Template"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # Web Framework
+    "fastapi>=0.124.4",
+    "uvicorn[standard]>=0.23.0",
+    # Database
+    "sqlalchemy[asyncio]>=2.0.0",
+    "asyncmy>=0.2.9",
+    "alembic>=1.13.0",
+    # Redis
+    "redis>=5.0.0",
+    # Data Validation
+    "pydantic>=2.11.7",
+    # Security
+    "pyjwt>=2.8.0",
+    "passlib[bcrypt]>=1.7.4",
+    # YAML
+    "pyyaml>=6.0.2",
+    # Telegram Bot
+    "aiogram>=3.21.0",
+    # Logging
+    "loguru>=0.7.0",
+    # Scheduler
+    "apscheduler>=3.11.0",
+    # Socket.IO
+    "python-socketio>=5.11.0",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+    "ruff>=0.4.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+]
+[tool.uv]
+# local use conda environment
+#managed = false
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]

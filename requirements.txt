@@ -1,0 +1,40 @@
+# Web Framework
+fastapi>=0.124.4
+uvicorn[standard]>=0.23.0
+
+# Database
+sqlalchemy[asyncio]>=2.0.0
+asyncmy>=0.2.9
+alembic>=1.13.0
+
+# Redis
+redis>=5.0.0
+
+# Data Validation
+pydantic>=2.11.7
+
+# Security
+pyjwt>=2.8.0
+passlib[bcrypt]>=1.7.4
+
+# YAML
+pyyaml>=6.0.2
+
+# Telegram Bot
+aiogram>=3.21.0
+
+# Logging
+loguru>=0.7.0
+
+# Scheduler
+apscheduler>=3.11.0
+
+# Development
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.27.0
+ruff>=0.4.0
+black>=24.0.0
+
+
+python-socketio>=5.11.0
